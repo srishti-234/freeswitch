@@ -188,10 +188,8 @@ paths:
       responses:
         200:
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/buyNumberResp'
+        201:
+            description: successful created
       security:
       - jwt_token: []
       x-codegen-request-body-name: body
@@ -639,15 +637,6 @@ components:
         sip_password:
           type: string
           example: test@123
-    buyNumberResp:
-      type: object
-      properties:
-        sip_username:
-          type: string
-          example: testusername
-        sip_password:
-          type: string
-          example: testuserpass
   parameters:
     keyword:
       name: keyword
