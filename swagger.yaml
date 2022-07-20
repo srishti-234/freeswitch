@@ -186,12 +186,21 @@ paths:
                   example: 1
         required: true
       responses:
-        200:
-          description: successful operation
+        201:
+          description: created
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/buyNumberResp'
+             schema:
+               type: object
+               properties:
+                 phonenumber:
+                   type: string
+                   description: us phonenumber buy
+                   example: "15014998137"
+                 extension:
+                  type: integer
+                  description: extension
+                  example: 1
       security:
       - jwt_token: []
       x-codegen-request-body-name: body
