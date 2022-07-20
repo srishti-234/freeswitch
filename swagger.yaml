@@ -25,7 +25,7 @@ paths:
       requestBody:
         description: Create extensions
         content:
-          '*/*':
+          'application/json':
             schema:
               $ref: '#/components/schemas/extensionsReq'
         required: true
@@ -60,7 +60,7 @@ paths:
       requestBody:
         description: Send SMS on us number
         content:
-          '*/*':
+          'application/json':
             schema:
               type: object
               properties:
@@ -172,7 +172,7 @@ paths:
       requestBody:
         description: Send SMS on us number
         content:
-          '*/*':
+          'application/json':
             schema:
               type: object
               properties:
@@ -188,8 +188,10 @@ paths:
       responses:
         200:
           description: successful operation
-        201:
-            description: successful created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/buyNumberResp'
       security:
       - jwt_token: []
       x-codegen-request-body-name: body
@@ -200,7 +202,7 @@ paths:
       requestBody:
         description: call on US Number
         content:
-          '*/*':
+          'application/json':
             schema:
               type: object
               properties:
@@ -226,7 +228,7 @@ paths:
       requestBody:
         description: scan number
         content:
-          '*/*':
+          'application/json':
             schema:
               type: object
               properties:
@@ -260,7 +262,7 @@ paths:
       requestBody:
         description: call menu
         content:
-          '*/*':
+          'application/json':
             schema:
               type: object
               properties:
@@ -286,7 +288,7 @@ paths:
       requestBody:
         description: call submenu
         content:
-          '*/*':
+          'application/json':
             schema:
               type: object
               properties:
@@ -316,7 +318,7 @@ paths:
       requestBody:
         description: SMS callback
         content:
-          '*/*':
+          'application/json':
             schema:
               $ref: '#/components/schemas/callBackRequest'
         required: true
@@ -637,6 +639,15 @@ components:
         sip_password:
           type: string
           example: test@123
+    buyNumberResp:
+      type: object
+      properties:
+        sip_username:
+          type: string
+          example: testusername
+        sip_password:
+          type: string
+          example: testuserpass
   parameters:
     keyword:
       name: keyword
